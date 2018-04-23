@@ -1,1 +1,71 @@
-a
+"Settings
+let scrolltep = 30
+let fullpagescrollpercent = 100
+"set nohud
+set autohidecursor
+"set noinsertmappings
+set nosmoothscroll
+let blacklists = ["https://mail.google.com/*","https://calendar.google.com/calendar/*","http://ch.nicovideo.jp/*"]
+let mapleader = ","
+"let locale = "jp"
+let hintcharacters = "abcdefghijklmnopqrstuvwxyz"
+let barposition = "bottom"
+set autoupdategist
+set scalehints
+" qmarks
+let qmark a = ["http://online.sangiin.go.jp/cgi-bin/yotei.cgi"]
+let qmark b = ["http://www.bitpark.com/company.html"]
+let qmark c = ["https://myportal3.securesites.com/product-portal/?locale=ja_JP"]
+let qmark d = ["http://dotinstall.com/home"]
+let qmark e = ["file:///T:/99-その他/参VOD配信試験html_16-04-25/ORG_index.html"]
+let qmark i = ["https://help.iij.ad.jp/index.cfm"]
+let qmark k = ["http://www.kenpoushinsa.sangiin.go.jp/"]
+let qmark m = ["http://192.168.8.192/munin/"]
+let qmark n = ["http://kdc-st-sv-online.sangiin-sk.go.jp/cgi-bin/yotei.cgi"]
+let qmark o = ["http://okurin.bitpark.co.jp/"]
+let qmark p = ["https://play.google.com/apps/publish/signup/"]
+let qmark r = ["https://192.168.3.210/"]
+let qmark s = ["http://www.sangiin.go.jp/"]
+let qmark t = ["http://translate.google.co.jp/"]
+let qmark v = ["http://www.webtv.sangiin.go.jp/webtv/index.php"]
+let qmark w = ["http://weathernews.jp/pinpoint/cgi/search_result.fcgi?service=3&post=3330811&name=[333-0811]%E5%9F%BC%E7%8E%89%E7%9C%8C%E5%B7%9D%E5%8F%A3%E5%B8%82%E6%88%B8%E5%A1%9A", "http://weather.yahoo.co.jp/weather/zoomradar/" ]
+let qmark y = ["http://www.yahoo.co.jp/"]
+let qmark z = ["http://weather.yahoo.co.jp/weather/zoomradar/"]
+" Move
+map <C-h> scrollLeft
+map <C-j> scrollDown
+map <C-k> scrollUp
+map <C-l> scrollRight
+map <C-u> scrollPageUp
+map <C-d> scrollPageDown
+map <C-b> scrollFullPageUp
+map <C-f> scrollFullPageDown
+" Navigation
+map d closeTab
+map u lastClosedTab
+map h previousTab
+map l nextTab
+" map <C-i> goForward
+" map <C-o> goBack
+" map :wo :new<Space>
+" map ;wo :new<Space>
+map R reloadTabUncached
+" Want to make a key to yank current selected word and search it...
+"map <C-g> :execute vlhyP<CR>
+" Currently, ":" doesn't shows command line.
+" Need at least one charactor (use <Space> here)
+map : :
+map gp :tabdetatch<CR>
+getIP() -> {{
+httpRequest({url: 'http://api.ipify.org/?format=json', json: true},
+            function(res) { Status.setMessage('IP: ' + res.ip); });
+}}
+" Displays your public IP address in the status bar
+map ci :call getIP<CR>
+getLastModified() -> {{
+            alert(document.lastModified);
+}}
+" 開いてるページのタイムスタンプをポップアップで表示する
+map cl :call getLastModified<CR>
+" Text boxes
+iunmapAll
